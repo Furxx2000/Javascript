@@ -62,5 +62,12 @@ function describePopulation(country, population) {
     console.log(describePopulation('China', 1140));
     console.log(describePopulation('Japan', 126));
     console.log(describePopulation('Taiwan', 23));
+// 
+
+
+// First Coding Challenge
+
+
+
 
   
