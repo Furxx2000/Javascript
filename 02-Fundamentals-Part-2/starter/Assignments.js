@@ -37,3 +37,30 @@ const country5 = countryJapan(126);
 const country6 = countryChina(1393);
 
 console.log(country4, country5, country6);
+
+
+// Arrow Functions 
+const percentageOfWorld3 = population => (population / 7900) * 100;
+const country7 = percentageOfWorld3(23);
+const country8 = percentageOfWorld3(126);
+const country9 = percentageOfWorld3(1393);
+
+console.log(country7);
+console.log(country8);
+console.log(country9);
+
+
+// Functions Calling Other Functions
+
+
+function describePopulation(country, population) {
+    const percentage = percentageOfWorld1(population)
+
+    return `${country} has ${population} million people, which is about ${percentage}% of the world`;
+};
+
+    console.log(describePopulation('China', 1140));
+    console.log(describePopulation('Japan', 126));
+    console.log(describePopulation('Taiwan', 23));
+
+  
