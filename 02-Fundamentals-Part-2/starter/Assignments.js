@@ -1,3 +1,5 @@
+'use strict';
+
 // Lecture 1 Functions
 function describeCountry(country, population, capitalcity) {
     const description = `${country} has ${population} million people and its capital city is ${capitalcity}`;
@@ -20,7 +22,8 @@ function percentageOfWorld1(population) {
 const country1 = percentageOfWorld1(23);
 const country2 = percentageOfWorld1(126);
 const country3 = percentageOfWorld1(1393);
-console.log(country1, country2, country3);
+const countryKorea = percentageOfWorld1(51)
+console.log(country1, country2, country3, countryKorea);
 
 const countryTaiwan = function (population) {
     return (population / 7900) * 100;
@@ -66,7 +69,73 @@ function describePopulation(country, population) {
 
 
 // First Coding Challenge
+const calcAverage = (firstScores, secondScores, thirdScores) => {
+    return (firstScores + secondScores + thirdScores) / 3;   
+};
 
+console.log(calcAverage(44, 23, 71));
+console.log(calcAverage(65, 54, 49));
+
+const avgDolphins = calcAverage(44, 23, 71);
+const avgkoalas = calcAverage(65, 54, 49);
+
+const avgDolphins2 = calcAverage(85, 54, 41);
+const avgKoalas2 = calcAverage(23, 34, 27);
+
+
+function checkWinner(avgDolphins, avgKoalas) {
+    if (avgDolphins >= (avgKoalas * 2)) {
+        console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
+    } else if (avgKoalas >= (avgDolphins * 2)) {
+        console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+    } else {
+        console.log('No team wins....');
+    }
+}
+
+const winner = checkWinner(avgDolphins, avgkoalas);
+const winner2 = checkWinner(avgDolphins2, avgKoalas2);
+
+
+// Introduction ot Arrays
+const populations = [23, 126, 1393, 51];
+console.log(populations.length === 4);
+
+// 自己解的  ↓
+// if (populations.length === 4){
+//     console.log('true');
+// } else {
+//     console.log('false');
+// }
+
+const percentages = [percentageOfWorld1(populations[0]), percentageOfWorld1(populations[1]), percentageOfWorld1(populations[2]), percentageOfWorld1(populations[3])]
+console.log(percentages); 
+
+
+//  Basic Array Operations (Methods)
+const neighbors =  ['France', 'Germany', 'United Kingdom'];
+
+neighbors.push('Utopia');
+console.log(neighbors);
+
+neighbors.pop();
+console.log(neighbors);
+
+if (!neighbors.includes('Germany')) {
+    console.log('Probably not a central European country');
+}
+
+neighbors[neighbors.indexOf('France')] = 'Republic of France';
+console.log(neighbors);
+
+
+
+
+
+
+
+
+ 
 
 
 

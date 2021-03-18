@@ -84,34 +84,103 @@
 //     return juice;
 // }
 
-// console.log(fruitProcessor(2, 3));
+// // console.log(fruitProcessor(2, 3));
 
-const calcAge = function (birthYear) {
-    return 2037 - birthYear;
+// const calcAge = function (birthYear) {
+//     return 2037 - birthYear;
+// }
+
+// const yearsUntilRetirement = function (birthYear, firstName) {
+//         const age = calcAge(birthYear);
+//         const retirement = 65 - age;
+
+//         if (retirement > 0) {
+//             console.log(`${firstName} retires in ${retirement} years`);
+//             return retirement;
+//         } else {
+//             console.log(`${firstName} has already retire.`);
+//             return -1;
+//         }        
+//     }
+
+//     console.log(yearsUntilRetirement(1991, 'Jonas'));
+//     console.log(yearsUntilRetirement(1950, 'Mike'));
+
+// // function calcAge(birthYear){
+// //     return 2037 -birthYear;
+// // }
+
+// // const calcAge = function(birthYear){
+// //     return 2037 - birthYear;
+// // }
+
+// // const calcAge = birthYear => 2037 - birthYear;
+
+// const friend1 = 'Michael';
+// const friend2 = 'Steven';
+// const friend3 = 'Peter';
+
+// const friends = ['Michael', 'Steven', 'Peter'];
+// console.log(friends);
+
+// const y = new Array(1991, 1984, 1967, 2008, 2020);
+
+// console.log(friends[0]);
+// console.log(friends[2]);
+
+// console.log(friends.length);
+// console.log(friends[friends.length - 1]);
+
+// friends[2] = 'Jay';
+// console.log(friends);
+
+// const firstName = 'Jonas'
+// const jonas = [firstName, 'Schmedtmann', 2037 - 1990, 'teacher', friends];
+// console.log(jonas);
+// console.log(jonas.length);
+
+// // Exercise
+// const calcAge2 = function (birthYear) {
+//     return 2037 - birthYear;
+// }
+// const years = [1990, 1967, 2002, 2010, 2018];
+
+// const age1 = calcAge2(years[0]);
+// const age2 = calcAge2(years[1]);
+// const age3 = calcAge2(years[years.length - 1]);
+// console.log(age1, age2, age3);
+
+// const ages = [calcAge2(years[0]), calcAge2(years[1]), calcAge2(years[years.length - 1])]
+// console.log(ages);
+
+// Add Elements
+const friends = ['Michael', 'Steven', 'Peter'];
+const newLength = friends.push('Jay'); // add to the last one
+console.log(friends);
+console.log(newLength);
+
+friends.unshift('John');// Add to the first one
+console.log(friends);
+
+// Remove Elements
+friends.pop();// kick out last one
+const popped = friends.pop(); // capture the value which was kicked out 
+console.log(popped);
+console.log(friends);
+
+friends.shift();// Remove the first one
+console.log(friends);
+
+console.log(friends.indexOf('Steven'));
+console.log(friends.indexOf('Bob'));
+
+
+friends.push(23);
+console.log(friends.includes('Steven'));
+console.log(friends.includes('Bob'));
+console.log(friends.includes('23'));
+console.log(friends.includes(23));
+
+if (friends.includes('Steven')) {
+    console.log('You have a friend called Steven');
 }
-
-const yearsUntilRetirement = function (birthYear, firstName) {
-        const age = calcAge(birthYear);
-        const retirement = 65 - age;
-
-        if (retirement > 0) {
-            console.log(`${firstName} retires in ${retirement} years`);
-            return retirement;
-        } else {
-            console.log(`${firstName} has already retire.`);
-            return -1;
-        }        
-    }
-
-    console.log(yearsUntilRetirement(1991, 'Jonas'));
-    console.log(yearsUntilRetirement(1950, 'Mike'));
-
-function calcAge(birthYear){
-    return 2037 -birthYear;
-}
-
-const calcAge = function(birthYear){
-    return 2037 - birthYear;
-}
-
-const calcAge = birthYear => 2037 - birthYear;
