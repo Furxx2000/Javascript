@@ -243,6 +243,21 @@ for(let i = 0; i < listOfNeighbors.length; i++){
 //         console.log(`Neighbor: ${listOfNeighbors[i][y]}`);
 
 
+// The While Loop
+const percentage3 = [];
+
+let i = 0;
+while(i < populations.length){
+    let perc2 = percentageOfWorld1(populations[i]);
+    percentage3.push(perc2);
+    i++;
+}
+console.log(percentage3);
+
+
+
+
+
 // Coding Challenge #4
 
 bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
