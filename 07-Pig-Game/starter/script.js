@@ -58,9 +58,8 @@ btnRoll.addEventListener('click', function () {
     if (dice !== 1) {
       // Add dice to current score
       currentScore += dice;
-      document.getElementById(
-        `current--${activePlayer}`
-      ).textContent = currentScore;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
     } else {
       // Switich to next player
       switichPlayer();
@@ -70,7 +69,7 @@ btnRoll.addEventListener('click', function () {
 
 btnHold.addEventListener('click', function () {
   if (playing) {
-    // 1. Add current score to avtive player's score
+    // 1. Add current score to active player's score
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
