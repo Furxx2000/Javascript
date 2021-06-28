@@ -53,31 +53,121 @@ const restaurant = {
   },
 };
 
-console.log('--------- OR ----------');
+// Coding Challenge 1
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
 
-// Use ANY data type, return ANY data type, short-circuiting
-console.log(3 || 'Jonas');
-console.log('' || 'Jonas');
-console.log(true || 0);
-console.log(undefined || null);
+// Coding Challenge 1-1
+const [players1, players2] = game.players;
+console.log(players1, players2);
 
-restaurant.numGuest = 23;
-const guest1 = restaurant.numGuest ? restaurant.numGuest : 10;
-console.log(guest1);
+// Coding Challenge 1-2
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
 
-const guest2 = restaurant.numGuest || 10;
-console.log(guest2);
+// Coding Challenge 1-3
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
 
-console.log('--------- AND ----------');
-console.log(0 && 'Jonas');
-console.log(7 && 'Jonas');
+// Coding Challenge 1-4
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
 
-// Practical Example
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('mushrooms', 'spinach');
-}
+// Coding Challenge 1-5
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1);
+console.log(draw);
+console.log(team2);
 
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+// Coding Challenge 1-6
+const printGoals = function (...players) {
+  let sum = 0;
+  for (let i = 0; i < players.length; i++) {
+    sum = players.length;
+    console.log(`Players: ${players[i]}`);
+  }
+  console.log(`Score: ${sum}`);
+};
+
+printGoals('Davis', 'Muller', 'Lewandowski', 'Kimmich');
+printGoals(...game.scored);
+
+// Coding Challenge 1-7
+team1 < team2 && console.log('Team 1 is more likely to win');
+team1 > team2 && console.log('Team 2 is more likely to win');
+// restaurant.numGuests = 0;
+// const guests = restaurant.numGuests || 10;
+// console.log(guests);
+
+// // Nullish: null and undefined (NOT 0 or '')
+// const guestCorrect = restaurant.numGuests ?? 10;
+// console.log(guestCorrect);
+
+// console.log('--------- OR ----------');
+
+// // Use ANY data type, return ANY data type, short-circuiting
+// console.log(3 || 'Jonas');
+// console.log('' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
+
+// restaurant.numGuest = 23;
+// const guest1 = restaurant.numGuest ? restaurant.numGuest : 10;
+// console.log(guest1);
+
+// const guest2 = restaurant.numGuest || 10;
+// console.log(guest2);
+
+// console.log('--------- AND ----------');
+// console.log(0 && 'Jonas');
+// console.log(7 && 'Jonas');
+
+// // Practical Example
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushrooms', 'spinach');
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
 // // 1. Destructuring
 
