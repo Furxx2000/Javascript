@@ -95,46 +95,54 @@ const game = {
   },
 };
 
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
 // Coding Challenge 1-1
-const [players1, players2] = game.players;
-console.log(players1, players2);
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
 
-// Coding Challenge 1-2
-const [gk, ...fieldPlayers] = players1;
-console.log(gk, fieldPlayers);
+// // Coding Challenge 1-2
+// const [gk, ...fieldPlayers] = players1;
+// console.log(gk, fieldPlayers);
 
-// Coding Challenge 1-3
-const allPlayers = [...players1, ...players2];
-console.log(allPlayers);
+// // Coding Challenge 1-3
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
 
-// Coding Challenge 1-4
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
-console.log(players1Final);
+// // Coding Challenge 1-4
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// console.log(players1Final);
 
-// Coding Challenge 1-5
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
-console.log(team1);
-console.log(draw);
-console.log(team2);
+// // Coding Challenge 1-5
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1);
+// console.log(draw);
+// console.log(team2);
 
-// Coding Challenge 1-6
-const printGoals = function (...players) {
-  let sum = 0;
-  for (let i = 0; i < players.length; i++) {
-    sum = players.length;
-    console.log(`Players: ${players[i]}`);
-  }
-  console.log(`Score: ${sum}`);
-};
+// // Coding Challenge 1-6
+// const printGoals = function (...players) {
+//   let sum = 0;
+//   for (let i = 0; i < players.length; i++) {
+//     sum = players.length;
+//     console.log(`Players: ${players[i]}`);
+//   }
+//   console.log(`Score: ${sum}`);
+// };
 
-printGoals('Davis', 'Muller', 'Lewandowski', 'Kimmich');
-printGoals(...game.scored);
+// printGoals('Davis', 'Muller', 'Lewandowski', 'Kimmich');
+// printGoals(...game.scored);
 
-// Coding Challenge 1-7
-team1 < team2 && console.log('Team 1 is more likely to win');
-team1 > team2 && console.log('Team 2 is more likely to win');
+// // Coding Challenge 1-7
+// team1 < team2 && console.log('Team 1 is more likely to win');
+// team1 > team2 && console.log('Team 2 is more likely to win');
 // restaurant.numGuests = 0;
 // const guests = restaurant.numGuests || 10;
 // console.log(guests);
