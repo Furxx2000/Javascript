@@ -51,35 +51,107 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+// -------------------Working With String 1----------------------
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+
+console.log(airline.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('Portugal'));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  //  B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got lucky');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+// ----------------------Coding Challenge 3--------------------
+// const gameEvents = new Map([
+//   [17, '⚽ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽ GOAL'],
+//   [80, '⚽ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
+// 3-1
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
+
+// 3-2
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+// 3-3
+// console.log(
+//   `An event happened, on average, every ${90 / gameEvents.size} minutes`
+// );
+// const time = [...gameEvents.keys()].pop();
+// console.log(time);
+// console.log(
+//   `An event happened, on average, every ${time / gameEvents.size} minutes`
+// );
+
+// 3-4
+// for (const [key, value] of gameEvents) {
+//   console.log(`[${key < 45 ? 'FIRST HALF' : 'SECOND HALF'}] ${key}: ${value}`);
+// }
 // ---------------------------Maps: Iteration------------------------------
-const question = new Map([
-  ['question', 'What is the best programming language in the world?'],
-  [1, 'C'],
-  [2, 'Java'],
-  [3, 'Javascript'],
-  ['correct', 3],
-  [true, 'Correct'],
-  [false, 'Try again'],
-]);
-console.log(question);
+// const question = new Map([
+//   ['question', 'What is the best programming language in the world?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'Javascript'],
+//   ['correct', 3],
+//   [true, 'Correct'],
+//   [false, 'Try again'],
+// ]);
+// console.log(question);
 
 // Convert object to map
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
 
 // Quiz app
-console.log(question.get('question'));
-for (const [key, value] of question) {
-  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
-}
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
 // const answer = Number(prompt('Your answer'));
-const answer = 3;
-console.log(question.get(answer === question.get('correct')));
+// const answer = 3;
+// console.log(question.get(answer === question.get('correct')));
 
 // Convert map to array
-console.log([...question]);
-console.log([...question.keys()]);
-console.log([...question.values()]);
+// console.log([...question]);
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
 
 // --------------------------Maps----------------------------
 // const rest = new Map();
@@ -419,7 +491,7 @@ console.log([...question.values()]);
 
 // restaurant.orderPasta(...ingredients);
 
-// // Objects
+// // -------------------Objects----------------------
 // const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
 // console.log(newRestaurant);
 
@@ -467,7 +539,7 @@ console.log([...question.values()]);
 // } = openingHours;
 // console.log(o, c);
 
-// ----------Destructuring arrays------------
+// -------------------Destructuring arrays-------------------
 // const arr = [2, 3, 4];
 // const a = arr[0];
 // const b = arr[1];
