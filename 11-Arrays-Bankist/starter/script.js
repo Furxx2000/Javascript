@@ -561,3 +561,131 @@ btnSort.addEventListener('click', function (e) {
 // });
 
 // --------------------------Summary: Which Array Method to Use-----------------------------
+// -----------------------------Array Methods Practices------------------------------
+// // 1.
+// const bankDepositSum = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 0)
+//   .reduce((sum, cur) => sum + cur);
+
+// console.log(bankDepositSum);
+
+// // 2.
+// // const numDeposits1000 = accounts
+// //   .flatMap(acc => acc.movements)
+// //   .filter(mov => mov >= 1000).length;
+
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+// console.log(numDeposits1000);
+
+// // Prefixed ++ operator
+// let a = 10;
+// console.log(++a);
+// console.log(a);
+
+// // 3.
+// const { deposits, withdrawals } = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+//       sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+//       return sums;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+// console.log(deposits, withdrawals);
+
+// // 4.
+// // This is a nice title => This Is a Nice Title
+// const convertTitleCase = function (title) {
+//   const capitalization = str => str[0].toUpperCase() + str.slice(1);
+
+//   const exceptions = ['a', 'an', 'the', 'and', 'but', 'or', 'on', 'in', 'with'];
+
+//   const titleCase = title
+//     .toLowerCase()
+//     .split(' ')
+//     .map(word => (exceptions.includes(word) ? word : capitalization(word)))
+//     .join(' ');
+//   return capitalization(titleCase);
+// };
+
+// console.log(convertTitleCase('this is a nice title'));
+// console.log(convertTitleCase('this is a LONG title but not too long'));
+// console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+
+// ---------------------------------Coding Challenge 4-----------------------------------
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// 4-1
+dogs.forEach(dog => {
+  dog.recommendedFood = dog.weight ** 0.75 * 28;
+});
+console.log(dogs);
+
+// 4-2
+const findDog = dog => {
+  const ownerOfDog = dog.find(dog =>
+    dog.owners.some(owner => owner === 'Sarah')
+  );
+  if (ownerOfDog.curFood > ownerOfDog.recommendedFood)
+    console.log(`${ownerOfDog.owners.join(' and ')}'s dog eating too much`);
+  else
+    console.log(`${ownerOfDog.owners.join(' and ')}'s dog eating too little`);
+};
+
+findDog(dogs);
+
+// 4-3
+const ownersEatTooMuch = dogs =>
+  dogs
+    .filter(dog => dog.curFood > dog.recommendedFood)
+    .map(owner => owner.owners);
+
+const ownersEatTooLittle = dogs =>
+  dogs
+    .filter(dog => dog.curFood < dog.recommendedFood)
+    .map(owner => owner.owners);
+
+console.log(ownersEatTooMuch(dogs));
+console.log(ownersEatTooLittle(dogs));
+
+// 4-4
+console.log(
+  `${ownersEatTooMuch(dogs).flat(2).join(' and ')}'s dogs eat too much!`
+);
+console.log(
+  `${ownersEatTooLittle(dogs).flat(2).join(' and ')}'s dogs eat too little!`
+);
+
+// 4-5
+const goodDog = dogs.some(dog => dog.curFood === dog.recommendedFood);
+console.log(goodDog);
+
+// 4-6
+const okayDogBoolean = dogs.some(
+  dog =>
+    dog.curFood < dog.recommendedFood * 1.1 &&
+    dog.curFood > dog.recommendedFood * 0.9
+);
+console.log(okayDogBoolean);
+
+// 4-7
+const okayDog = dogs.filter(
+  dog =>
+    dog.curFood < dog.recommendedFood * 1.1 &&
+    dog.curFood > dog.recommendedFood * 0.9
+);
+console.log(okayDog);
+
+// 4-8
+const dogsCopy = dogs.slice();
