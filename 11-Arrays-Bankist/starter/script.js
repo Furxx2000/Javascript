@@ -354,6 +354,7 @@ btnClose.addEventListener('click', function (e) {
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = '';
+  labelWelcome.textContent = 'Log in to get started';
 });
 
 // -------------------------Sorting Arrays--------------------------
@@ -627,65 +628,61 @@ const dogs = [
 ];
 
 // 4-1
-dogs.forEach(dog => {
-  dog.recommendedFood = dog.weight ** 0.75 * 28;
-});
+dogs.forEach(
+  dog => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28))
+);
 console.log(dogs);
 
 // 4-2
 const findDog = dog => {
-  const ownerOfDog = dog.find(dog =>
-    dog.owners.some(owner => owner === 'Sarah')
+  const ownerOfDog = dog.find(dog => dog.owners.includes('Sarah'));
+  console.log(
+    `Sarah's dog is eating too ${
+      ownerOfDog.curFood > ownerOfDog.recommendedFood ? 'much' : 'little'
+    }`
   );
-  if (ownerOfDog.curFood > ownerOfDog.recommendedFood)
-    console.log(`${ownerOfDog.owners.join(' and ')}'s dog eating too much`);
-  else
-    console.log(`${ownerOfDog.owners.join(' and ')}'s dog eating too little`);
 };
-
 findDog(dogs);
 
 // 4-3
 const ownersEatTooMuch = dogs =>
   dogs
     .filter(dog => dog.curFood > dog.recommendedFood)
-    .map(owner => owner.owners);
+    .flatMap(owner => owner.owners);
 
 const ownersEatTooLittle = dogs =>
   dogs
     .filter(dog => dog.curFood < dog.recommendedFood)
-    .map(owner => owner.owners);
+    .flatMap(owner => owner.owners);
 
 console.log(ownersEatTooMuch(dogs));
 console.log(ownersEatTooLittle(dogs));
 
 // 4-4
-console.log(
-  `${ownersEatTooMuch(dogs).flat(2).join(' and ')}'s dogs eat too much!`
-);
-console.log(
-  `${ownersEatTooLittle(dogs).flat(2).join(' and ')}'s dogs eat too little!`
-);
+console.log(`${ownersEatTooMuch(dogs).join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle(dogs).join(' and ')}'s dogs eat too little!`);
 
 // 4-5
 const goodDog = dogs.some(dog => dog.curFood === dog.recommendedFood);
 console.log(goodDog);
 
 // 4-6
-const okayDogBoolean = dogs.some(
-  dog =>
-    dog.curFood < dog.recommendedFood * 1.1 &&
-    dog.curFood > dog.recommendedFood * 0.9
-);
+const checkDogs = dog =>
+  dog.curFood < dog.recommendedFood * 1.1 &&
+  dog.curFood > dog.recommendedFood * 0.9;
+
+const okayDogBoolean = dogs.some(checkDogs);
 console.log(okayDogBoolean);
 
 // 4-7
-const okayDog = dogs.filter(
-  dog =>
-    dog.curFood < dog.recommendedFood * 1.1 &&
-    dog.curFood > dog.recommendedFood * 0.9
-);
+const okayDog = dogs.filter(checkDogs);
 console.log(okayDog);
 
 // 4-8
 const dogsCopy = dogs.slice();
+
+const ascendingDogs = dogsCopy.sort(
+  (dog1, dog2) => dog1.recommendedFood - dog2.recommendedFood
+);
+
+console.log(ascendingDogs);
