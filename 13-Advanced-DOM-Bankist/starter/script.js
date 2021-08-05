@@ -480,8 +480,8 @@ const slider = function () {
 
   const init = function () {
     goToSlide(0);
-    // activateDot(0);
     createDots();
+    activateDot(0);
   };
   init();
 
