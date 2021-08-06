@@ -504,3 +504,17 @@ const slider = function () {
   });
 };
 slider();
+
+
+// --------------------------------Lifecycle of DOM Events------------------------------
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
+
+// --------------------Efficient Script Loading: defer and async------------------------
