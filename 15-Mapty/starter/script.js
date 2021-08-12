@@ -83,6 +83,9 @@ class App {
 
   // This is where we have all the codes that is executed when the App is load.
   constructor() {
+    // Check if any workout exists in the sidebar to hide the sort button or not
+    this._checkIfWorkoutEmpty();
+
     // Get user's position
     this._getPosition();
 
@@ -215,6 +218,8 @@ class App {
 
     // Set local storage to all workouts
     this._setLocalStorage();
+
+    this._checkIfWorkoutEmpty();
   }
 
   _editWorkout(e) {
@@ -356,7 +361,6 @@ class App {
       const workoutC = this.#workouts;
       const workoutA = workoutC.find(work => work.id === workoutB.dataset.id);
       const workoutIndex = workoutC.indexOf(workoutA);
-      console.log(workoutIndex);
 
       // Delete workout
       workoutB.remove();
@@ -372,6 +376,8 @@ class App {
 
       // set localStorage
       this._setLocalStorage();
+
+      this._checkIfWorkoutEmpty();
     }
   }
 
@@ -389,6 +395,12 @@ class App {
     });
 
     this.#sorted = !this.#sorted;
+  }
+
+  _checkIfWorkoutEmpty() {
+    if (!document.querySelector('.workouts .workout'))
+      sort.style.display = 'none';
+    else sort.style.display = 'inline';
   }
 }
 
