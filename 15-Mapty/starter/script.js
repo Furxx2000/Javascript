@@ -63,6 +63,7 @@ class Cycling extends Workout {
 // console.log(run1, cycling1);
 
 ////////////////////////////////////////////////////////////////
+const sort = document.querySelector('.sort');
 const logo = document.querySelector('.logo');
 const form = document.querySelector('.form');
 const containerWorkouts = document.querySelector('.workouts');
@@ -78,6 +79,7 @@ class App {
   #mapEvent;
   #workouts = [];
   #marker = [];
+  sorted = false;
 
   // This is where we have all the codes that is executed when the App is load.
   constructor() {
@@ -94,6 +96,7 @@ class App {
     containerWorkouts.addEventListener('click', this._editWorkout.bind(this));
     containerWorkouts.addEventListener('click', this._removeItem.bind(this));
     logo.addEventListener('click', this.reset);
+    sort.addEventListener('click', this._sortedWorkout.bind(this));
   }
 
   _getPosition() {
@@ -371,9 +374,21 @@ class App {
       this._setLocalStorage();
     }
   }
+
+  _sortedWorkout(sorted = true) {
+    const lis = document.querySelector('li');
+
+    const arrs = sorted
+      ? this.#workouts.sort((a, b) => a.distance - b.distance)
+      : this.#workouts;
+    arrs.forEach(arr => {
+      this._renderWorkout(arr);
+    });
+  }
 }
 
 const app = new App();
 
 // --------------------------Using The Geolocation API---------------------------
+
 
