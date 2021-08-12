@@ -63,6 +63,7 @@ class Cycling extends Workout {
 // console.log(run1, cycling1);
 
 ////////////////////////////////////////////////////////////////
+const logo = document.querySelector('.logo');
 const form = document.querySelector('.form');
 const containerWorkouts = document.querySelector('.workouts');
 const inputType = document.querySelector('.form__input--type');
@@ -76,6 +77,7 @@ class App {
   #mapZoomLevel = 13;
   #mapEvent;
   #workouts = [];
+  #marker = [];
 
   // This is where we have all the codes that is executed when the App is load.
   constructor() {
@@ -91,6 +93,7 @@ class App {
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
     containerWorkouts.addEventListener('click', this._editWorkout.bind(this));
     containerWorkouts.addEventListener('click', this._removeItem.bind(this));
+    logo.addEventListener('click', this.reset);
   }
 
   _getPosition() {
@@ -225,7 +228,7 @@ class App {
   }
 
   _renderWorkoutMarker(workout) {
-    L.marker(workout.coords)
+    const marker = L.marker(workout.coords)
       .addTo(this.#map)
       .bindPopup(
         L.popup({
@@ -242,6 +245,8 @@ class App {
         } ${workout.description}`
       )
       .openPopup();
+
+    this.#marker.push(marker);
   }
 
   _renderWorkout(workout) {
@@ -346,20 +351,24 @@ class App {
     if (e.target.classList.contains('workout__cancel')) {
       const workoutB = e.target.closest('.workout');
       const workoutC = this.#workouts;
-      const workoutA = workoutC.findIndex(
-        work => work.id === workoutB.dataset.id
-      );
+      const workoutA = workoutC.find(work => work.id === workoutB.dataset.id);
+      const workoutIndex = workoutC.indexOf(workoutA);
+      console.log(workoutIndex);
 
-      workoutC.splice(workoutA, 1);
+      // Delete workout
+      workoutB.remove();
 
+      // Delete markup
+      this.#map.removeLayer(this.#marker[workoutIndex]);
+
+      // Delete element in #workouts array
+      workoutC.splice(workoutIndex, 1);
+
+      // Delete element in #marker array
+      this.#marker.splice(workoutIndex, 1);
+
+      // set localStorage
       this._setLocalStorage();
-      console.log(workoutC);
-      workoutC.forEach(work => {
-        this._renderWorkout(work);
-        this._renderWorkoutMarker(work);
-      });
-
-      // this._getLocalStorage();
     }
   }
 }
