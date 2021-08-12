@@ -79,7 +79,7 @@ class App {
   #mapEvent;
   #workouts = [];
   #marker = [];
-  sorted = false;
+  #sorted = true;
 
   // This is where we have all the codes that is executed when the App is load.
   constructor() {
@@ -375,20 +375,23 @@ class App {
     }
   }
 
-  _sortedWorkout(sorted = true) {
-    const lis = document.querySelector('li');
+  _sortedWorkout(sorted) {
+    const lis = document.querySelectorAll('.workouts > li');
 
-    const arrs = sorted
-      ? this.#workouts.sort((a, b) => a.distance - b.distance)
+    lis.forEach(li => li.remove());
+
+    const arrs = this.#sorted
+      ? this.#workouts.slice().sort((a, b) => a.distance - b.distance)
       : this.#workouts;
+
     arrs.forEach(arr => {
       this._renderWorkout(arr);
     });
+
+    this.#sorted = !this.#sorted;
   }
 }
 
 const app = new App();
 
 // --------------------------Using The Geolocation API---------------------------
-
-
