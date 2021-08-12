@@ -87,7 +87,22 @@ a:visited {
 .workout__title {
   font-size: 1.7rem;
   font-weight: 600;
-  grid-column: 1 / -1;
+  grid-column: 1 / 3;
+  white-space: nowrap;
+}
+
+.workout__edit {
+  font-size: 1.5rem;
+  font-weight: 600;
+  grid-column: 3 / 3;
+  text-align: end;
+}
+
+.workout__cancel {
+  font-size: 1.5rem;
+  font-weight: 900;
+  grid-column: 4 / 4;
+  text-align: end;
 }
 
 .workout__details {
