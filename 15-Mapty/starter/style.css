@@ -53,6 +53,11 @@ a:visited {
   height: 5.2rem;
   align-self: center;
   margin-bottom: 4rem;
+  cursor: pointer;
+}
+
+.sort {
+  cursor: pointer;
 }
 
 .workouts {
@@ -233,3 +238,4 @@ a:visited {
 .cycling-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--1);
 }
+
