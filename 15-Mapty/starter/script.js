@@ -228,13 +228,22 @@ class App {
   _editWorkout(e) {
     if (e.target.classList.contains('workout__edit')) {
       form.classList.remove('hidden');
-      const workoutEl = e.target.closest('workout');
+
+      const workoutEl = e.target.closest('.workout');
 
       if (!workoutEl) return;
 
       const workout = this.#workouts.find(
         work => work.id === workoutEl.dataset.id
       );
+
+      const workoutIndex = this.#workouts.indexOf(workout);
+
+      console.log(workout);
+
+      workout.distance = +inputDistance;
+      workout.duration = +inputDuration;
+      workout.type = inputType;
     }
   }
 
@@ -401,14 +410,16 @@ class App {
   }
 
   _checkIfWorkoutEmpty() {
-    if (!document.querySelector('.workouts .workout'))
-      sort.style.display = 'none';
-    else sort.style.display = 'inline';
+    if (document.querySelector('.workouts .workout'))
+      sort.classList.add('open');
+    else sort.classList.remove('open');
   }
 
   _checkIfInputs(e) {
     if (e.target.classList.contains('form__input')) {
-      errorMsg.classList.remove('open');
+      e.target.addEventListener('input', () => {
+        e.target.value > 0 && errorMsg.classList.remove('open');
+      });
     }
   }
 }
@@ -416,3 +427,4 @@ class App {
 const app = new App();
 
 // --------------------------Using The Geolocation API---------------------------
+
