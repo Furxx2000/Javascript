@@ -67,7 +67,9 @@ a:visited {
   border-radius: 0.6rem;
   color: #00c46a;
   font-weight: 600;
-  transition: 0.1s ease-in;
+  transition: 0.1s ease-out;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .sort:hover {
@@ -77,6 +79,11 @@ a:visited {
 
 .sort:active {
   transform: scale(0.95);
+}
+
+.sort.open {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .workouts {
@@ -120,6 +127,11 @@ a:visited {
   font-weight: 600;
   grid-column: 3 / 3;
   text-align: end;
+  transition: 0.1s ease-out;
+}
+
+.workout__edit:hover {
+  color: #00c46a;
 }
 
 .workout__edit:active {
@@ -131,6 +143,11 @@ a:visited {
   font-weight: 900;
   grid-column: 4 / 4;
   text-align: end;
+  transition: 0.15s ease-out;
+}
+
+.workout__cancel:hover {
+  color: #00c46a;
 }
 
 .workout__cancel:active {
@@ -181,7 +198,7 @@ a:visited {
   z-index: 1000;
   background-color: azure;
   color: crimson;
-  top: 25.5%;
+  top: 29.5%;
   left: 24%;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
