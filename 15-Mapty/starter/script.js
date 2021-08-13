@@ -66,6 +66,8 @@ class Cycling extends Workout {
 const sort = document.querySelector('.sort');
 const logo = document.querySelector('.logo');
 const form = document.querySelector('.form');
+const inputs = document.querySelectorAll('input');
+const errorMsg = document.querySelector('.error_message');
 const containerWorkouts = document.querySelector('.workouts');
 const inputType = document.querySelector('.form__input--type');
 const inputDistance = document.querySelector('.form__input--distance');
@@ -98,6 +100,7 @@ class App {
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
     containerWorkouts.addEventListener('click', this._editWorkout.bind(this));
     containerWorkouts.addEventListener('click', this._removeItem.bind(this));
+    containerWorkouts.addEventListener('click', this._checkIfInputs);
     logo.addEventListener('click', this.reset);
     sort.addEventListener('click', this._sortedWorkout.bind(this));
   }
@@ -186,7 +189,7 @@ class App {
         !validInputs(distance, duration, cadence) ||
         !allPositive(distance, duration, cadence)
       )
-        return alert('Inputs have to be positive numbers');
+        return errorMsg.classList.add('open');
 
       workout = new Running([lat, lng], distance, duration, cadence);
     }
@@ -199,7 +202,7 @@ class App {
         !validInputs(distance, duration, elevation) ||
         !allPositive(distance, duration)
       )
-        return alert('Inputs have to be positive numbers');
+        return errorMsg.classList.add('open');
       workout = new Cycling([lat, lng], distance, duration, elevation);
     }
 
@@ -401,6 +404,12 @@ class App {
     if (!document.querySelector('.workouts .workout'))
       sort.style.display = 'none';
     else sort.style.display = 'inline';
+  }
+
+  _checkIfInputs(e) {
+    if (e.target.classList.contains('form__input')) {
+      errorMsg.classList.remove('open');
+    }
   }
 }
 
