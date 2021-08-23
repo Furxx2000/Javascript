@@ -1,15 +1,22 @@
 {
   "name": "starter",
   "version": "1.0.0",
-  "description": "",
   "main": "clean.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "leaflet": "^1.7.1",
+    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"
-  }
+  },
+  "devDependencies": {
+    "cssnano": "^5.0.8",
+    "postcss": "^8.3.6"
+  },
+  "keywords": [],
+  "description": ""
 }
