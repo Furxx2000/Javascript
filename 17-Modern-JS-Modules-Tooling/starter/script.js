@@ -9,7 +9,7 @@
 // ShoppingCart.addToCart('bread', 5);
 // console.log(ShoppingCart.totalPrice);
 
-import add, { cart, arr } from './shoppingCart.js';
+import add, { cart } from './shoppingCart.js';
 add('pizza', 2);
 add('bread', 5);
 add('apple', 4);
@@ -63,6 +63,7 @@ const state = {
 };
 const stateClone = Object.assign({}, state);
 const stateDeepClone = cloneDeep(state);
+
 state.user.loggedIn = false;
 console.log(stateClone);
 
