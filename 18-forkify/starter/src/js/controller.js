@@ -1,7 +1,6 @@
 import { recipe } from 'prelude-ls';
 // import { icons } from '..img/icons.svg'; // Parcel 1
-import icons from 'url:..img/icons.svg'; // Parcel 2
-console.log(icons);
+// import icons from 'url:..img/icons.svg'; // Parcel 2
 
 import 'regenerator-runtime/runtime';
 const recipeContainer = document.querySelector('.recipe');
