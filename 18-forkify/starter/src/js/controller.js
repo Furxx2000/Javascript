@@ -1,4 +1,4 @@
-import { recip } from 'prelude-ls';
+import { recipe } from 'prelude-ls';
 import 'regenerator-runtime/runtime';
 const recipeContainer = document.querySelector('.recipe');
 
