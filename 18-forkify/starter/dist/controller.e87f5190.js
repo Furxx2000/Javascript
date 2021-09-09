@@ -1523,11 +1523,8 @@ var View = /*#__PURE__*/function () {
       var newDOM = document.createRange().createContextualFragment(newMarkup);
       var newElements = Array.from(newDOM.querySelectorAll('*'));
       var curElements = Array.from(this._parentElement.querySelectorAll('*'));
-      console.log(curElements);
-      console.log(newElements);
       newElements.forEach(function (newEl, i) {
-        var curEl = curElements[i];
-        console.log(curEl, newEl.isEqualNode(curEl)); // Updates changed TEXT
+        var curEl = curElements[i]; // Updates changed TEXT
 
         if (!newEl.isEqualNode(curEl) && newEl.firstChild.nodeValue.trim() !== '') {
           curEl.textContent = newEl.textContent;
